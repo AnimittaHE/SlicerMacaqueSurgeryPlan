@@ -57,3 +57,7 @@ $nhp-ct-mri-hippocampus-qa
 - Never reuse subject-specific transforms, indices, thresholds, search regions, side mappings, or apparatus calibration records.
 
 See [`SKILL.md`](nhp-ct-mri-hippocampus-qa/SKILL.md) for the complete gated workflow and resource routing.
+
+## License
+
+This project is released under the [MIT License](LICENSE).
