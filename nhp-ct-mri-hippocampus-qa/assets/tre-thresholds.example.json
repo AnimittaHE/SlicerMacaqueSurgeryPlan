@@ -1,0 +1,13 @@
+{
+  "status": "DRAFT_DO_NOT_USE",
+  "protocol_name": "REPLACE_WITH_PREAPPROVED_RESEARCH_PROTOCOL",
+  "approved_by": "",
+  "approver_role": "",
+  "approval_date": "",
+  "limits_mm": {
+    "rms_tre_max": null,
+    "maximum_tre_max": null,
+    "absolute_mean_axis_error_max": null
+  },
+  "warning": "The Skill must not invent universal thresholds. Complete this file only from an approved protocol."
+}

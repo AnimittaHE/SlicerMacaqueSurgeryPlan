@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "status": "UNVERIFIED_CANDIDATE",
+  "research_only": true,
+  "project_id": "REPLACE_ME",
+  "subject_id": "REPLACE_ME",
+  "species": "REPLACE_WITH_EXACT_SPECIES_OR_SUBSPECIES",
+  "modules": {
+    "ct_mri_registration": true,
+    "hippocampal_candidate": true,
+    "cranial_landmark_candidates": false,
+    "candidate_stereotactic_frame": false,
+    "independent_tre": true
+  },
+  "inputs": {
+    "ct": {
+      "path": "ABSOLUTE_PATH_TO_SELECTED_CT_DICOM_DIRECTORY_OR_VOLUME",
+      "format": "DICOM_OR_VOLUME",
+      "series_uid_or_acquisition_id": "REPLACE_ME"
+    },
+    "mri": {
+      "path": "ABSOLUTE_PATH_TO_T1_MRI",
+      "format": "ANALYZE_NIFTI_NRRD_OR_DICOM",
+      "series_uid_or_acquisition_id": "REPLACE_ME"
+    }
+  },
+  "registration": {
+    "fixed_modality": "MRI",
+    "moving_modality": "CT",
+    "transform_direction": "CT_NATIVE_TO_MRI_NATIVE",
+    "default_model": "RIGID_6DOF",
+    "affine_allowed": false,
+    "affine_justification": "",
+    "nonlinear_allowed": false,
+    "minimum_multistarts": 7,
+    "selection_rule": "PREDECLARE_TRANSFORM_CONSENSUS_RULE",
+    "chosen_transform": {
+      "status": "NOT_YET_SELECTED",
+      "path": null,
+      "sha256": "",
+      "source_node_or_record": "",
+      "direction_evidence": "",
+      "binding_id": ""
+    }
+  },
+  "laterality": {
+    "status": "UNCONFIRMED",
+    "confirmed_by": "",
+    "role": "",
+    "date": "",
+    "evidence": "",
+    "ct_biological_left_identification": "",
+    "mri_biological_left_identification": "",
+    "unresolved_conflicts": ""
+  },
+  "atlas": {
+    "status": "NOT_SELECTED",
+    "name": "",
+    "version": "",
+    "species": "",
+    "resolution_mm": null,
+    "in_vivo_or_ex_vivo": "",
+    "source": "",
+    "license": "",
+    "hippocampal_labels": [],
+    "applicability_justification": ""
+  },
+  "cranial_landmarks": {
+    "status": "NOT_REQUESTED",
+    "accepted_for_surgical_use": false,
+    "ear_candidate_method": "NOT_SELECTED",
+    "ear_landmark_operational_definition": "",
+    "ear_template_name_version_hash": "",
+    "ear_transform_direction_evidence": null,
+    "manual_ct_ear_config": null,
+    "orbitale_candidate_method": "NOT_SELECTED",
+    "orbitale_operational_definition": "",
+    "ct_orbitale_config": null,
+    "common_point_space": "MRI_NATIVE_WORLD_RAS_MM",
+    "candidate_frame_rule": "INTERAURAL_AXIS_PLUS_ORBITALE_MIDPOINT",
+    "candidate_frame_input": null,
+    "biological_axis_signs_confirmed": false,
+    "axis_sign_evidence": null,
+    "apparatus_calibrated": false,
+    "apparatus_and_calibration_record": null,
+    "expert_landmark_review_required": true
+  },
+  "qa": {
+    "approved_protocol": "",
+    "tre_thresholds_file": null,
+    "module_gate_records": {
+      "ct_mri_registration": null,
+      "hippocampal_candidate": null,
+      "cranial_landmark_candidates": null,
+      "candidate_stereotactic_frame": null,
+      "independent_tre": null
+    },
+    "independent_reviewer_required": true,
+    "expert_hf_review_required": true
+  },
+  "expert_review": {
+    "status": "NOT_REVIEWED",
+    "reviewed_by": "",
+    "role": "",
+    "date": "",
+    "scope": "",
+    "evidence_record": "",
+    "authorization_basis": ""
+  },
+  "software": {
+    "slicer_executable": "ABSOLUTE_PATH_TO_SLICER_EXECUTABLE",
+    "slicer_version": "REPLACE_ME"
+  },
+  "output_dir": "ABSOLUTE_PATH_TO_NEW_DERIVATIVE_OUTPUT_DIRECTORY"
+}

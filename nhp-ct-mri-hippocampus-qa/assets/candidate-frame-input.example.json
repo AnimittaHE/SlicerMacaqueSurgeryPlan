@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "status": "UNVERIFIED_CANDIDATE",
+  "research_only": true,
+  "subject_id": "REPLACE_ME",
+  "coordinate_system": "SLICER_RAS_MM",
+  "common_space_name": "MRI_NATIVE_WORLD_RAS_MM",
+  "construction_rule": "INTERAURAL_AXIS_PLUS_ORBITALE_MIDPOINT",
+  "ear_input_policy": "REQUIRE_CT_BONY_EAM",
+  "points_ras_mm": {
+    "ear_coordinate_side_A": [0.0, 0.0, 0.0],
+    "ear_coordinate_side_B": [1.0, 0.0, 0.0],
+    "orbitale_coordinate_side_A": [0.0, 1.0, 0.0],
+    "orbitale_coordinate_side_B": [1.0, 1.0, 0.0]
+  },
+  "point_source_reports": [
+    {
+      "role": "ear_candidates",
+      "path": "ABSOLUTE_PATH_TO_EAR_CANDIDATE_REPORT_JSON",
+      "sha256": "REPLACE_WITH_64_CHARACTER_SHA256"
+    },
+    {
+      "role": "orbitale_candidates",
+      "path": "ABSOLUTE_PATH_TO_ORBITALE_CANDIDATE_REPORT_JSON",
+      "sha256": "REPLACE_WITH_64_CHARACTER_SHA256"
+    }
+  ],
+  "orbitale_review_evidence": {
+    "path": "ABSOLUTE_PATH_TO_ORBITALE_REVIEW_EVIDENCE_JSON",
+    "sha256": "REPLACE_WITH_64_CHARACTER_SHA256"
+  },
+  "side_pairing_evidence": {
+    "status": "CONFIRMED_SAME_COORDINATE_SIDE_PAIRING",
+    "evidence": "REPLACE_WITH_EVIDENCE_THAT_A_AND_B_REFER_TO_THE_SAME_TWO_COORDINATE_SIDES_IN_BOTH_REPORTS",
+    "reviewed_by": "REPLACE_ME",
+    "role": "REPLACE_ME",
+    "date": "YYYY-MM-DD"
+  },
+  "biological_laterality_confirmed": false,
+  "biological_axis_signs_confirmed": false,
+  "axis_sign_evidence": null,
+  "side_A_to_B_is_positive_ml": false,
+  "ear_mid_to_orbitale_mid_is_positive_ap": false,
+  "cross_product_is_positive_dv": false,
+  "apparatus_calibrated": false,
+  "apparatus_and_calibration_record": null,
+  "expert_review_required": true
+}

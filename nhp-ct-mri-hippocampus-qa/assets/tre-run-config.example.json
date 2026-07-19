@@ -1,0 +1,33 @@
+{
+  "template": {
+    "landmark_spec": "ABSOLUTE_PATH_TO_APPROVED_LANDMARK_SPEC.json",
+    "output_dir": "ABSOLUTE_PATH_TO_TRE_REVIEW_DIRECTORY",
+    "ct_source": "ABSOLUTE_PATH_TO_FROZEN_NATIVE_CT_VOLUME",
+    "mri_source": "ABSOLUTE_PATH_TO_FROZEN_NATIVE_MRI_VOLUME",
+    "ct_template_filename": "CT_native_landmarks_UNFILLED.mrk.json",
+    "mri_template_filename": "MRI_native_landmarks_UNFILLED.mrk.json"
+  },
+  "compute": {
+    "native_ct": "ABSOLUTE_PATH_TO_FROZEN_NATIVE_CT_VOLUME_OR_DICOM_DIRECTORY",
+    "native_mri": "ABSOLUTE_PATH_TO_FROZEN_NATIVE_MRI_VOLUME",
+    "ct_blank_template": "ABSOLUTE_PATH_TO_CT_native_landmarks_UNFILLED.mrk.json",
+    "mri_blank_template": "ABSOLUTE_PATH_TO_MRI_native_landmarks_UNFILLED.mrk.json",
+    "ct_markups": "ABSOLUTE_PATH_TO_CT_native_landmarks_FILLED.mrk.json",
+    "mri_markups": "ABSOLUTE_PATH_TO_MRI_native_landmarks_FILLED.mrk.json",
+    "ct_to_mri_transform": "ABSOLUTE_PATH_TO_CT_TO_MRI_RIGID_TRANSFORM.h5",
+    "transform_direction": "CT_NATIVE_TO_MRI_NATIVE",
+    "landmark_spec": "ABSOLUTE_PATH_TO_APPROVED_LANDMARK_SPEC.json",
+    "laterality_confirmation": null,
+    "frozen_hash_manifest": "ABSOLUTE_PATH_TO_FROZEN_INPUTS_MANIFEST.json",
+    "required_frozen_roles": [
+      "native_ct",
+      "native_mri",
+      "ct_to_mri_transform",
+      "landmark_spec",
+      "ct_blank_template",
+      "mri_blank_template"
+    ],
+    "thresholds_file": null,
+    "output_dir": "ABSOLUTE_PATH_TO_TRE_RESULTS_DIRECTORY"
+  }
+}

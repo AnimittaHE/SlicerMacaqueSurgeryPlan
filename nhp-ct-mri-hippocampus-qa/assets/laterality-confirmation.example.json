@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "subject_id": "REPLACE_ME",
+  "status": "UNCONFIRMED",
+  "confirmed_by": "",
+  "role": "",
+  "date": "",
+  "evidence": "",
+  "ct_biological_left_identification": "",
+  "mri_biological_left_identification": "",
+  "unresolved_conflicts": "",
+  "warning": "Do not infer biological side from screen position, Slicer R/L labels, or the candidate registration."
+}

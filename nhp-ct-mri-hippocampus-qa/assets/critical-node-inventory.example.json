@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "status": "CANDIDATE_CRITICAL_NODE_INVENTORY",
+  "scene_relative_path": "scene_CANDIDATE_EXPERT_REVIEW_REQUIRED.mrml",
+  "scene_sha256": "UPPERCASE_SHA256_OF_FINAL_MRML_SCENE",
+  "nodes": [
+    {
+      "role": "fixed_mri_reference",
+      "id": "EXACT_MRML_NODE_ID",
+      "name": "EXACT_MRML_NODE_NAME",
+      "tag": "Volume",
+      "expected_parent_transform": null
+    },
+    {
+      "role": "registered_ct_in_mri_space",
+      "id": "EXACT_MRML_NODE_ID",
+      "name": "EXACT_MRML_NODE_NAME",
+      "tag": "Volume",
+      "expected_parent_transform": null
+    },
+    {
+      "role": "chosen_ct_to_mri_transform",
+      "id": "EXACT_MRML_NODE_ID",
+      "name": "EXACT_MRML_NODE_NAME",
+      "tag": "LinearTransform",
+      "expected_parent_transform": null
+    }
+  ],
+  "warning": "Inventory every coordinate-bearing Volume, Segmentation, Model, Markups, ROI, and Transform node in the final scene. All entries remain research candidates, not surgical approvals."
+}

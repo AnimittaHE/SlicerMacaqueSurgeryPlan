@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "status": "ORBITALE_CANDIDATE_QA_RECORDED",
+  "accepted_for_surgical_use": false,
+  "subject_id": "REPLACE_ME",
+  "source_orbitale_report": {
+    "path": "ABSOLUTE_PATH_TO_CT_ORBITALE_REPORT_JSON",
+    "sha256": "REPLACE_WITH_64_CHARACTER_SHA256"
+  },
+  "reviewed_by": "REPLACE_ME",
+  "role": "REPLACE_ME",
+  "date": "YYYY-MM-DD",
+  "evidence": "REPLACE_WITH_NATIVE_CT_SLICE_AND_3D_BONE_REVIEW_FINDINGS",
+  "native_ct_adjacent_slice_qa": [
+    {
+      "path": "ABSOLUTE_PATH_TO_NATIVE_CT_ADJACENT_SLICE_QA",
+      "sha256": "REPLACE_WITH_64_CHARACTER_SHA256"
+    }
+  ],
+  "ct_bone_3d_qa": [
+    {
+      "path": "ABSOLUTE_PATH_TO_CT_BONE_3D_QA",
+      "sha256": "REPLACE_WITH_64_CHARACTER_SHA256"
+    }
+  ],
+  "expert_anatomical_review_status": "PENDING",
+  "expert_review_scope": "",
+  "unresolved_questions": "REPLACE_WITH_PENDING_EXPERT_QUESTIONS",
+  "unresolved_conflicts": ""
+}

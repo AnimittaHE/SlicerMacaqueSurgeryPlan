@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "status": "TECHNICAL_GATE_REVIEWED_FOR_RESEARCH_QA",
+  "accepted_for_surgical_use": false,
+  "subject_id": "REPLACE_ME",
+  "project_id": "REPLACE_ME",
+  "module": "REPLACE_WITH_ONE_ENABLED_MODULE_NAME",
+  "approved_protocol": "REPLACE_WITH_EXACT_APPROVED_PROTOCOL_IDENTIFIER",
+  "locked_transform": {
+    "path": "ABSOLUTE_PATH_TO_LOCKED_TRANSFORM_ARTIFACT",
+    "sha256": "REPLACE_WITH_64_CHARACTER_SHA256",
+    "binding_id": "REPLACE_WITH_CASE_SPECIFIC_LOCKED_TRANSFORM_ID"
+  },
+  "reviewed_by": "REPLACE_ME",
+  "role": "REPLACE_ME",
+  "date": "YYYY-MM-DD",
+  "evidence": "REPLACE_WITH_PREDECLARED_GATE_AND_REVIEW_FINDINGS",
+  "source_outputs": [
+    {
+      "path": "ABSOLUTE_PATH_TO_GATE_OUTPUT_OR_REPORT",
+      "sha256": "REPLACE_WITH_64_CHARACTER_SHA256"
+    }
+  ],
+  "unresolved_conflicts": ""
+}

@@ -1,0 +1,30 @@
+__pycache__/
+*.py[cod]
+*.log
+.DS_Store
+Thumbs.db
+
+# Medical imaging, Slicer scenes, and case-specific derivative data must not be committed.
+*.dcm
+*.ima
+*.img
+*.hdr
+*.nii
+*.nii.gz
+*.nrrd
+*.nhdr
+*.raw
+*.mha
+*.mhd
+*.mrml
+*.mrb
+*.seg.nrrd
+*.h5
+*.tfm
+
+# Local validation and case-output directories.
+forward-test/
+audit-tests/
+results/
+derivatives/
+case-data/

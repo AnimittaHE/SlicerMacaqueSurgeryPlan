@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "status": "CALIBRATION_AND_CONTACT_EVIDENCE_REVIEWED",
+  "accepted_for_surgical_use": false,
+  "subject_id": "REPLACE_ME",
+  "frame_model_and_identifier": "REPLACE_ME",
+  "ear_bar_geometry_and_insertion_definition": "REPLACE_ME",
+  "image_to_apparatus_calibration": {
+    "path": "ABSOLUTE_PATH_TO_CALIBRATION_TRANSFORM_OR_RECORD",
+    "sha256": "REPLACE_WITH_64_CHARACTER_SHA256",
+    "transform_direction": "APPARATUS_TO_CT_NATIVE"
+  },
+  "mechanical_contact_definition": "REPLACE_ME",
+  "mechanical_contact_points_native_ct_ijk": {
+    "coordinate_side_A": [0.0, 0.0, 0.0],
+    "coordinate_side_B": [0.0, 0.0, 0.0]
+  },
+  "mechanical_contact_derivation_evidence": "REPLACE_WITH_HOW_THE_CALIBRATION_AND_APPARATUS_GEOMETRY_PRODUCED_THE_TWO_CT_POINTS",
+  "reviewed_by": "REPLACE_ME",
+  "role": "REPLACE_ME",
+  "date": "YYYY-MM-DD",
+  "unresolved_conflicts": ""
+}

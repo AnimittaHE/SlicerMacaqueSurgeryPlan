@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "status": "UNVERIFIED_CANDIDATE",
+  "research_only": true,
+  "subject_id": "REPLACE_ME",
+  "ct_space_expected": "left-posterior-superior",
+  "physical_units": "mm",
+  "physical_units_evidence": "REPLACE_WITH_HEADER_OR_ACQUISITION_EVIDENCE",
+  "ct_intensity_units": "HU",
+  "ct_hu_calibration_evidence": "REPLACE_WITH_DICOM_RESCALE_OR_CONVERSION_EVIDENCE",
+  "bone_threshold_hu": 200,
+  "ray_axis": 1,
+  "front_index_direction": "high_to_low",
+  "front_direction_evidence": "REPLACE_WITH_DICOM_AND_ANATOMICAL_EVIDENCE",
+  "voxel_ray_alignment_justification": "REPLACE_WITH_EVIDENCE_THAT_ONE_NATIVE_VOXEL_AXIS_IS_ADEQUATE_FOR_THE_ORBITAL_PROJECTION",
+  "inferior_axis": 2,
+  "inferior_index_direction": "low",
+  "inferior_direction_evidence": "REPLACE_WITH_DICOM_AND_ANATOMICAL_EVIDENCE",
+  "depth_thresholds_index": [100, 110, 120],
+  "boundary_quantile": 0.1,
+  "rim_offset_index": -1,
+  "minimum_component_voxels": 500,
+  "sides": {
+    "coordinate_side_A": {
+      "plane_roi_min_inclusive": [0, 0],
+      "plane_roi_max_exclusive": [1, 1],
+      "component_seed_in_plane": [0, 0]
+    },
+    "coordinate_side_B": {
+      "plane_roi_min_inclusive": [0, 0],
+      "plane_roi_max_exclusive": [1, 1],
+      "component_seed_in_plane": [0, 0]
+    }
+  },
+  "output_space_name": "MRI_NATIVE_WORLD_RAS_MM",
+  "transform_direction": "CT_NATIVE_RAS_TO_OUTPUT_RAS",
+  "ct_native_ras_to_output_ras_4x4": [
+    [1.0, 0.0, 0.0, 0.0],
+    [0.0, 1.0, 0.0, 0.0],
+    [0.0, 0.0, 1.0, 0.0],
+    [0.0, 0.0, 0.0, 1.0]
+  ],
+  "transform_source": {
+    "path": "ABSOLUTE_PATH_TO_MRML_OR_MATRIX_RECORD",
+    "sha256": "REPLACE_WITH_64_CHARACTER_SHA256",
+    "kind": "MRML_LINEAR_TRANSFORM_TO_PARENT_RAS",
+    "node_name": "REPLACE_WITH_EXACT_LINEAR_TRANSFORM_NODE_NAME",
+    "moving_volume_node_name": "REPLACE_WITH_NATIVE_CT_NODE_NAME",
+    "fixed_volume_node_name": "REPLACE_WITH_UNTRANSFORMED_MRI_NODE_NAME",
+    "binding_id": "REPLACE_WITH_CASE_SPECIFIC_LOCKED_TRANSFORM_ID"
+  },
+  "output_reference_volume": {
+    "path": "ABSOLUTE_PATH_TO_OUTPUT_REFERENCE_NRRD",
+    "sha256": "REPLACE_WITH_64_CHARACTER_SHA256",
+    "physical_units": "mm",
+    "physical_units_evidence": "REPLACE_WITH_HEADER_OR_ACQUISITION_EVIDENCE"
+  },
+  "matrix_must_be_proper_rigid": true,
+  "anatomical_definition": "REPLACE_WITH_PROTOCOL_DEFINED_LOWEST_POINT_ON_THE_INFERIOR_BONY_ORBITAL_RIM",
+  "expert_review_required": true
+}

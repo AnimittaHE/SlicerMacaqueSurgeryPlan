@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "status": "DRAFT_DO_NOT_USE",
+  "protocol_name": "REPLACE_WITH_APPROVED_PROTOCOL",
+  "approved_by": "",
+  "approver_role": "",
+  "approval_date": "",
+  "minimum_paired_points": 6,
+  "minimum_extent_each_axis_mm": null,
+  "minimum_smallest_singular_value_mm": null,
+  "landmarks": [
+    {
+      "label": "MIDLINE_LANDMARK_01",
+      "side": "midline",
+      "definition": "REPLACE_WITH_AN_OPERATIONAL_DEFINITION_VISIBLE_IN_BOTH_CT_AND_MRI"
+    },
+    {
+      "label": "MIDLINE_LANDMARK_02",
+      "side": "midline",
+      "definition": "REPLACE_WITH_AN_OPERATIONAL_DEFINITION_VISIBLE_IN_BOTH_CT_AND_MRI"
+    },
+    {
+      "label": "STRUCTURE_A_BIOLOGICAL_LEFT",
+      "side": "biological_left",
+      "definition": "REPLACE_AFTER_BIOLOGICAL_LATERALITY_IS_CONFIRMED"
+    },
+    {
+      "label": "STRUCTURE_A_BIOLOGICAL_RIGHT",
+      "side": "biological_right",
+      "definition": "REPLACE_AFTER_BIOLOGICAL_LATERALITY_IS_CONFIRMED"
+    },
+    {
+      "label": "STRUCTURE_B_BIOLOGICAL_LEFT",
+      "side": "biological_left",
+      "definition": "REPLACE_AFTER_BIOLOGICAL_LATERALITY_IS_CONFIRMED"
+    },
+    {
+      "label": "STRUCTURE_B_BIOLOGICAL_RIGHT",
+      "side": "biological_right",
+      "definition": "REPLACE_AFTER_BIOLOGICAL_LATERALITY_IS_CONFIRMED"
+    }
+  ]
+}

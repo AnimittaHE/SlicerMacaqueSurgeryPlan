@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "status": "UNVERIFIED_CANDIDATE",
+  "research_only": true,
+  "subject_id": "REPLACE_ME",
+  "landmark_class": "BONY_EAM_ANATOMICAL_CANDIDATE",
+  "operational_definition": "REPLACE_WITH_PROTOCOL_DEFINED_BONY_EXTERNAL_AUDITORY_MEATUS_POINT",
+  "source_ct": {
+    "path": "ABSOLUTE_PATH_TO_NATIVE_CT_NRRD",
+    "sha256": "REPLACE_WITH_64_CHARACTER_SHA256",
+    "space_expected": "left-posterior-superior",
+    "physical_units": "mm",
+    "physical_units_evidence": "REPLACE_WITH_HEADER_OR_ACQUISITION_EVIDENCE"
+  },
+  "points_native_ct_ijk": {
+    "coordinate_side_A": [0.0, 0.0, 0.0],
+    "coordinate_side_B": [0.0, 0.0, 0.0]
+  },
+  "output_space_name": "MRI_NATIVE_WORLD_RAS_MM",
+  "transform_direction": "CT_NATIVE_RAS_TO_OUTPUT_RAS",
+  "ct_native_ras_to_output_ras_4x4": [
+    [1.0, 0.0, 0.0, 0.0],
+    [0.0, 1.0, 0.0, 0.0],
+    [0.0, 0.0, 1.0, 0.0],
+    [0.0, 0.0, 0.0, 1.0]
+  ],
+  "transform_source": {
+    "path": "ABSOLUTE_PATH_TO_HASHED_MRML_SCENE",
+    "sha256": "REPLACE_WITH_64_CHARACTER_SHA256",
+    "kind": "MRML_LINEAR_TRANSFORM_TO_PARENT_RAS",
+    "node_name": "REPLACE_WITH_EXACT_LINEAR_TRANSFORM_NODE_NAME",
+    "moving_volume_node_name": "REPLACE_WITH_NATIVE_CT_NODE_NAME",
+    "fixed_volume_node_name": "REPLACE_WITH_UNTRANSFORMED_MRI_NODE_NAME",
+    "binding_id": "REPLACE_WITH_CASE_SPECIFIC_LOCKED_TRANSFORM_ID"
+  },
+  "output_reference_volume": {
+    "path": "ABSOLUTE_PATH_TO_OUTPUT_REFERENCE_NRRD",
+    "sha256": "REPLACE_WITH_64_CHARACTER_SHA256",
+    "physical_units": "mm",
+    "physical_units_evidence": "REPLACE_WITH_HEADER_OR_ACQUISITION_EVIDENCE"
+  },
+  "expert_point_review": {
+    "status": "REVIEWED_AS_UNVERIFIED_CANDIDATE",
+    "reviewed_by": "REPLACE_ME",
+    "role": "REPLACE_ME",
+    "date": "YYYY-MM-DD",
+    "evidence": "REPLACE_WITH_NATIVE_CT_ADJACENT_SLICE_AND_3D_BONE_REVIEW_RECORD"
+  },
+  "apparatus_contact_evidence": null,
+  "accepted_for_surgical_use": false
+}

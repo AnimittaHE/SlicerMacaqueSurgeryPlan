@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "status": "AXIS_SIGNS_REVIEWED_WITHIN_RECORDED_SCOPE",
+  "accepted_for_surgical_use": false,
+  "subject_id": "REPLACE_ME",
+  "ear_input_policy": "REQUIRE_CT_BONY_EAM",
+  "common_reference_sha256": "REPLACE_WITH_64_CHARACTER_SHA256",
+  "transform_binding_id": "REPLACE_WITH_CASE_SPECIFIC_LOCKED_TRANSFORM_ID",
+  "source_reports": {
+    "ear_candidates": {
+      "path": "ABSOLUTE_PATH_TO_EAR_CANDIDATE_REPORT_JSON",
+      "sha256": "REPLACE_WITH_64_CHARACTER_SHA256"
+    },
+    "orbitale_candidates": {
+      "path": "ABSOLUTE_PATH_TO_ORBITALE_CANDIDATE_REPORT_JSON",
+      "sha256": "REPLACE_WITH_64_CHARACTER_SHA256"
+    }
+  },
+  "orbitale_review_evidence": {
+    "path": "ABSOLUTE_PATH_TO_ORBITALE_REVIEW_EVIDENCE_JSON",
+    "sha256": "REPLACE_WITH_64_CHARACTER_SHA256"
+  },
+  "laterality_confirmation": {
+    "path": "ABSOLUTE_PATH_TO_CONFIRMED_LATERALITY_JSON",
+    "sha256": "REPLACE_WITH_64_CHARACTER_SHA256"
+  },
+  "side_A_to_B_is_positive_ml": false,
+  "ear_mid_to_orbitale_mid_is_positive_ap": false,
+  "cross_product_is_positive_dv": false,
+  "evidence": "REPLACE_WITH_SUBJECT_AND_FRAME_SPECIFIC_POSITIVE_ML_AP_DV_SIGN_EVIDENCE",
+  "reviewed_by": "REPLACE_ME",
+  "role": "REPLACE_ME",
+  "date": "YYYY-MM-DD",
+  "unresolved_conflicts": ""
+}

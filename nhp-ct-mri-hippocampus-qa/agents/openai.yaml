@@ -1,0 +1,4 @@
+interface:
+  display_name: "NHP CT-MRI, Hippocampal and Cranial Landmark QA"
+  short_description: "Guarded NHP registration, brain-region, and landmark QA"
+  default_prompt: "Use $nhp-ct-mri-hippocampus-qa to create a research-only NHP CT-MRI registration, hippocampal candidate, cranial-landmark candidate, and QA package."

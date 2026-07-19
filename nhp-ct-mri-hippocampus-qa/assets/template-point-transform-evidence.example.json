@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "status": "CONFIRMED_FOR_SEARCH_SEED_POINT_PROPAGATION",
+  "subject_id": "REPLACE_ME",
+  "fixed_image": {
+    "path": "ABSOLUTE_PATH_TO_SUBJECT_MRI",
+    "sha256": "REPLACE_WITH_64_CHARACTER_SHA256",
+    "physical_units": "mm",
+    "physical_units_evidence": "REPLACE_WITH_HEADER_OR_ACQUISITION_EVIDENCE"
+  },
+  "moving_image": {
+    "path": "ABSOLUTE_PATH_TO_FULL_HEAD_TEMPLATE",
+    "sha256": "REPLACE_WITH_64_CHARACTER_SHA256",
+    "physical_units": "mm",
+    "physical_units_evidence": "REPLACE_WITH_TEMPLATE_HEADER_OR_RELEASE_DOCUMENTATION"
+  },
+  "stored_transform": {
+    "path": "ABSOLUTE_PATH_TO_ITK_AFFINE_H5",
+    "sha256": "REPLACE_WITH_64_CHARACTER_SHA256",
+    "point_map_direction": "moving-to-fixed"
+  },
+  "resampled_image": {
+    "path": "ABSOLUTE_PATH_TO_RESAMPLED_TEMPLATE",
+    "sha256": "REPLACE_WITH_64_CHARACTER_SHA256"
+  },
+  "evidence": "REPLACE_WITH_MAPPED_POINT_AND_RESAMPLED_IMAGE_DIRECTION_CHECK",
+  "reviewed_by": "REPLACE_ME",
+  "role": "REPLACE_ME",
+  "date": "YYYY-MM-DD"
+}
