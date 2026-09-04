@@ -12,6 +12,7 @@
 - Expert cranial-landmark review: pending/not requested
 - Candidate frame and axis signs: pending/not requested
 - Apparatus calibration: pending/not requested
+- Brain-contact geometry candidate: pending/not requested
 
 ## Inputs and transform
 
@@ -40,6 +41,10 @@
 - Ear midpoint / candidate frame construction and input policy:
 - Candidate-frame input path and SHA-256:
 - Biological axis-sign evidence:
+- Brain-contact footprint, projection direction, and in-plane reference:
+- Brain-mask path/hash and coordinate space:
+- Envelope window, Gaussian sigma, and artificial-dura offset:
+- Contact-surface/closed-block outputs and provenance report:
 
 ## QA and rejected candidates
 
@@ -48,6 +53,7 @@
 - Independent TRE:
 - Cranial-landmark adjacent-slice/3D QA:
 - Landmark and frame sensitivity:
+- Brain-contact ray coverage, no-penetration, mesh, STL reload, and slice QA:
 - Module gate records:
 - Rejected candidates and reasons:
 

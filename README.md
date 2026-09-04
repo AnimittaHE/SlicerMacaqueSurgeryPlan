@@ -1,6 +1,6 @@
 # SlicerMacaqueSurgeryPlan
 
-Research-only Codex Skill for guarded non-human-primate CT-to-T1 MRI registration, hippocampal-formation candidate visualization, cranial-landmark localization, and stereotactic-frame candidate QA in 3D Slicer.
+Research-only Codex Skill for guarded non-human-primate CT-to-T1 MRI registration, hippocampal-formation candidate visualization, cranial-landmark localization, stereotactic-frame candidate QA, and MRI-derived brain-contact curvature candidate modeling in 3D Slicer.
 
 > [!CAUTION]
 > This project does not approve surgery, define a craniotomy, select a trajectory or target, establish a safety margin, or replace review by qualified veterinary, neurosurgical, imaging, and stereotactic-frame specialists.
@@ -15,11 +15,19 @@ Research-only Codex Skill for guarded non-human-primate CT-to-T1 MRI registratio
 - Calibrated mechanical ear-bar contact candidates.
 - Template-derived ear-region search seeds for visualization only.
 - Interaural/Ear-Bar Zero (EBZ) midpoint and candidate AP/ML/DV frame construction.
+- User-defined directed rectangular brain-surface contact candidates, including an open contact surface and watertight CAD intermediary block.
+- Configurable outer-envelope and Gaussian smoothing for artificial-dura concept studies, with an explicit non-negative offset and no-penetration clamp.
 - 3D Slicer scene packaging, provenance records, hashes, and static MRML auditing.
 
 ## EBZ terminology
 
 Ear-Bar Zero is an apparatus-defined stereotactic reference, not a universal anatomical point. A CT/MRI-derived interaural midpoint is only a research candidate. Mechanical EBZ requires subject-specific evidence for the actual bilateral ear-bar contacts, apparatus calibration, verified head positioning, and expert review.
+
+## Brain-contact geometry branch
+
+Copy [`brain-contact-config.example.json`](nhp-ct-mri-hippocampus-qa/assets/brain-contact-config.example.json) into a new derivative case directory and enter the two opposite rectangle corners, the directed projection line, the in-plane reference vector, and the frozen MRI-space brain-mask path. Keep case coordinates and subject paths outside this repository.
+
+Run [`slicer_generate_brain_contact_block.py`](nhp-ct-mri-hippocampus-qa/scripts/slicer_generate_brain_contact_block.py) in 3D Slicer with `NHP_BRAIN_CONTACT_CONFIG` set to that completed configuration. The script produces an open contact-surface STL, a watertight closed-block STL, input markups, deterministic raw/intermediate/final depth maps, mesh/reload QA, provenance, and hashes. See [`brain-surface-contact-modeling.md`](nhp-ct-mri-hippocampus-qa/references/brain-surface-contact-modeling.md) for inputs, invariants, stop conditions, and artificial-dura limitations.
 
 ## Repository layout
 
@@ -53,6 +61,8 @@ $nhp-ct-mri-hippocampus-qa
 - Keep T1 MRI fixed and apply the chosen CT-to-MRI transform exactly once.
 - Never infer biological laterality from screen position or registration alone.
 - Keep bony EAM landmarks, mechanical ear-bar contacts, and template search seeds distinct.
+- Require the contact footprint and projection direction to come from the user or a documented expert-reviewed planning step; the Skill does not choose a craniotomy or trajectory.
+- Treat brain-mask smoothing and artificial-dura offsets as unverified geometry parameters, not tissue-mechanics or pressure models.
 - Treat every image, segmentation, point, midpoint, line, plane, and axis as a research candidate until the required QA and named expert review are complete.
 - Never reuse subject-specific transforms, indices, thresholds, search regions, side mappings, or apparatus calibration records.
 

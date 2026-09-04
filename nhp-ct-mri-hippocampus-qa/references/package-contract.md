@@ -28,6 +28,14 @@ candidate-package/
     candidate-frame-input.json
     orbitale-review-evidence.json
     candidate_frame_metrics.json
+  brain_contact_CANDIDATE_ONLY/
+    brain-contact-config.json
+    input_rectangle_UNVERIFIED.mrk.json
+    projection_direction_UNVERIFIED.mrk.json
+    contact_surface_UNVERIFIED_CANDIDATE.stl
+    closed_contact_block_UNVERIFIED_CANDIDATE.stl
+    depth_maps_raw_outer_gaussian_final_mm.npy
+    brain_contact_provenance_UNVERIFIED_CANDIDATE.json
   qa_images/
   tre_review/
   provenance/
@@ -39,13 +47,13 @@ candidate-package/
   README.md
 ```
 
-Include hippocampal and cranial-landmark files only for requested modules. Adapt extensions to the environment but preserve roles, provenance, coordinate space, and candidate status.
+Include hippocampal, cranial-landmark, and brain-contact files only for requested modules. Adapt extensions to the environment but preserve roles, provenance, coordinate space, and candidate status.
 
 For ear evidence, designate exactly one authoritative candidate pathway in the project config and README: template search seeds, expert-defined CT bony EAM, or calibrated mechanical ear-bar contacts. If template and CT files are both retained for comparison, label the non-selected set `NONAUTHORITATIVE_COMPARISON_ONLY`; never let both silently feed one frame. Bind the authoritative `candidate-frame-input.json` by path and SHA-256 in the project config, and require its `ear_input_policy` to match the selected pathway.
 
 ## README fields
 
-Include the research warning, subject/acquisition identifiers, Slicer/modules, fixed/moving definitions and transform direction, registration parameters and selection rule, interpolation, laterality evidence, atlas/model provenance and applicability, hippocampal method and uncertain borders, cranial-landmark operational definitions and methods, native/common point spaces, EBZ midpoint status, candidate-frame construction and sign evidence, apparatus-calibration status, QA findings, rejected candidates, TRE design/results or missing status, limitations, required reviews, and current state.
+Include the research warning, subject/acquisition identifiers, Slicer/modules, fixed/moving definitions and transform direction, registration parameters and selection rule, interpolation, laterality evidence, atlas/model provenance and applicability, hippocampal method and uncertain borders, cranial-landmark operational definitions and methods, native/common point spaces, EBZ midpoint status, candidate-frame construction and sign evidence, apparatus-calibration status, requested brain-contact footprint/direction/mask binding/smoothing/dura offset/mesh QA, QA findings, rejected candidates, TRE design/results or missing status, limitations, required reviews, and current state.
 
 ## QA images
 
@@ -64,6 +72,7 @@ Include pre-registration versus chosen candidate, all three planes, temporal-lob
 - Check transform determinant, orthogonality, direction, and expected hash.
 - Verify segmentation names, colors, label codes, and geometry.
 - Verify every landmark's source space, common world space, node parent transform, report hash, and coordinate-side label.
+- For brain-contact outputs, verify the frozen mask/config hashes, RAS inputs and basis, full-footprint ray coverage, no-penetration invariant, zero boundary/non-manifold edges, and STL reload bounds agreement.
 - Recompute midpoints and frame vectors from packaged points; check unit length, mutual orthogonality, handedness, degeneracy, and sign-evidence status.
 - Recompute package hashes after every final change and verify them independently.
 

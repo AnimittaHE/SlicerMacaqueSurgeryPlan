@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "status": "UNVERIFIED_CANDIDATE",
+  "research_only": true,
+  "subject_id": "REPLACE_ME",
+  "input": {
+    "mode": "coordinates",
+    "coordinate_system": "3D Slicer world RAS millimetres",
+    "diagonal_point_0_ras_mm": null,
+    "diagonal_point_2_ras_mm": null,
+    "direction_line_start_ras_mm": null,
+    "direction_line_end_ras_mm": null,
+    "diagonal_markup_node_name": "INPUT_Footprint_Diagonal",
+    "direction_line_node_name": "INPUT_Projection_Direction"
+  },
+  "brain_mask": {
+    "node_name": "",
+    "path": "ABSOLUTE_PATH_TO_FROZEN_MRI_SPACE_BINARY_BRAIN_MASK",
+    "sha256": "REPLACE_WITH_64_CHARACTER_SHA256",
+    "foreground_threshold": 0.5
+  },
+  "geometry": {
+    "plane_u_reference_ras": [1.0, 0.0, 0.0],
+    "max_diagonal_plane_error_mm": 0.5,
+    "minimum_side_length_mm": 2.0,
+    "minimum_block_depth_mm": 0.5
+  },
+  "sampling": {
+    "grid_spacing_mm": 0.3,
+    "ray_step_mm": 0.15,
+    "max_projection_distance_mm": 100.0,
+    "binary_refinement_iterations": 8,
+    "minimum_hit_coverage": 1.0,
+    "allow_nearest_fill_for_misses": false
+  },
+  "smoothing": {
+    "outer_envelope_window_mm": 5.0,
+    "gaussian_sigma_mm": 2.0,
+    "dura_offset_mm": 0.0
+  },
+  "output": {
+    "root": "ABSOLUTE_PATH_TO_NEW_DERIVATIVE_OUTPUT_ROOT",
+    "run_name": "REPLACE_WITH_UNIQUE_RUN_NAME",
+    "allow_overwrite": false
+  }
+}

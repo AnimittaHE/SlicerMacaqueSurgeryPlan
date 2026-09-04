@@ -1,9 +1,9 @@
 ---
 name: nhp-ct-mri-hippocampus-qa
-description: Run a guarded research-only workflow for non-human-primate CT-to-T1 MRI registration, orientation and laterality auditing, atlas-based hippocampal-formation candidate visualization, bilateral external-auditory-meatus or ear-bar candidate localization, CT-derived inferior orbital-rim (orbitale) candidates, interaural/EBZ midpoint and stereotactic-frame candidate construction, multi-start consensus QA, independent landmark TRE, 3D Slicer scene packaging, provenance, and hashes. Use when asked to register monkey, macaque, or other NHP CT and MRI; investigate flips, double transforms, or misregistration; map an NHP hippocampal atlas; find ear holes, ear-bar zero, AP/ML zero, orbitale points, or Frankfurt/Horsley-Clarke axes; color bilateral brain-region candidates; build a preoperative research review scene; or validate such a package. Do not use to approve a surgery, craniotomy, trajectory, target, or safety margin.
+description: Run a guarded research-only workflow for non-human-primate CT-to-T1 MRI registration, orientation and laterality auditing, hippocampal candidate visualization, cranial-landmark and candidate-frame construction, independent TRE, and MRI-derived brain-contact curvature candidate modeling for Slicer/CAD. Use for monkey or macaque CT/MRI registration; flip or double-transform investigation; NHP atlas mapping; ear/EAM, EBZ, AP/ML zero, orbitale, or frame candidates; colored brain-region candidates; user-defined directed rectangular brain-surface contact blocks; preoperative research scenes; provenance; or package validation. Do not use to approve surgery, choose a craniotomy, trajectory, target, pressure, or safety margin.
 ---
 
-# NHP CT-MRI, Hippocampal, and Cranial-Landmark QA
+# NHP CT-MRI, Landmark, and Brain-Contact Candidate QA
 
 ## Non-negotiable scope
 
@@ -93,9 +93,21 @@ Read `references/cranial-landmarks-and-stereotactic-frame.md` before locating ea
 - Freeze and verify the native CT, native MRI, chosen transform, landmark specification, and blank templates before marking.
 - Report every point, RMS, median, 95th percentile, maximum, signed R/A/S mean error, and spatial coverage. Apply no pass/fail grade unless an approved thresholds file is supplied.
 
-### Gate 7 - package and scene validation
+### Gate 7 - brain-surface contact geometry candidate
 
-- Save the transform, CT resampled once into MRI space, hippocampal segmentation, labelmaps/models, requested cranial-landmark reports and markups, `.mrml`, QA images, provenance, config, frozen hashes, validation report, and limitations README.
+- Run this branch only from a frozen individual-subject brain mask in MRI native world space. Do not substitute an atlas-average cortical surface when subject-specific contact curvature is requested.
+- Require a user- or expert-defined rectangular footprint and directed projection line. Do not automatically select a craniotomy, target, trajectory, contact pressure, or safety margin.
+- Express two opposite rectangle corners and the directed line in one Slicer world RAS millimetre space. Also record an in-plane reference vector because a diagonal and projection direction alone do not uniquely fix the rectangle edge directions.
+- Require the brain-mask node, input markups, and generated models to have no parent transform. Stop on possible double application.
+- Use `scripts/slicer_generate_brain_contact_block.py` for deterministic first-hit ray casting, configurable outer-envelope/Gaussian smoothing, a no-penetration clamp, watertight block construction, STL round-trip validation, provenance, and hashes.
+- Treat artificial-dura smoothing and offset as unvalidated geometric parameters, not tissue mechanics. Keep the offset at zero until thickness, compression, wrinkling, fixation, and preload are documented.
+- Require full-footprint slice review, 3D context, zero open/non-manifold edges, and saved-STL reload agreement before handing a candidate to Blender or SolidWorks.
+
+Read `references/brain-surface-contact-modeling.md` before deriving a contact surface or closed contact block.
+
+### Gate 8 - package and scene validation
+
+- Save the transform, CT resampled once into MRI space, hippocampal segmentation, labelmaps/models, requested cranial-landmark reports and markups, requested brain-contact configuration/models, `.mrml`, QA images, provenance, config, frozen hashes, validation report, and limitations README.
 - Keep fixed MRI, registered CT, segmentation, and world-coordinate landmark nodes free of parent transforms in the saved review scene.
 - Remove hidden experimental masks, native/unregistered moving volumes, CLI history nodes, and rejected candidates from the review scene.
 - Run `scripts/audit_mrml_package.py` and reload the scene in Slicer. Recompute package hashes after the last change.
@@ -116,6 +128,8 @@ Stop and report the exact blocker when any of these occurs:
 - ear or orbit candidates outside bone/anatomy, unstable across thresholds/slices, or dependent on one extreme voxel;
 - insufficient evidence to sign AP, ML, or DV axes or calibrate the frame;
 - insufficient independent landmarks or validation leakage;
+- brain-contact inputs in mixed spaces, diagonal-plane failure, top samples inside the brain mask, incomplete ray coverage, unreviewed mask boundary, no-penetration failure, non-manifold geometry, or STL round-trip mismatch;
+- unspecified artificial-dura thickness/compression or mechanical constraints when a contact candidate would be used beyond visualization;
 - missing approved thresholds when a pass/fail judgment is requested;
 - failed hash, scene self-containment, or source-integrity check;
 - unresolved hippocampal or cranial-landmark boundary or expert disagreement.
@@ -130,5 +144,6 @@ Do not guess around a gate. Produce diagnostic artifacts with `QA_FAILED` or `UN
 - Use `references/atlas-and-segmentation.md` for NHP atlas applicability and hippocampal review.
 - Use `references/cranial-landmarks-and-stereotactic-frame.md` for ear, orbitale, midpoint, axis, and frame-candidate work.
 - Use `references/slicer-operations.md` for Slicer execution, interpolation, markups, screenshots, rendering, and scene handling.
+- Use `references/brain-surface-contact-modeling.md` for a user-defined directed rectangle, MRI-mask first-hit envelope, artificial-dura smoothing parameters, STL generation, and mesh QA.
 - Use `references/package-contract.md` for deliverables, provenance, naming, and validation.
 - Copy and complete files in `assets/`; never use example values as approved protocol content.

@@ -429,6 +429,10 @@ def validate(config, allow_missing_paths=False):
             errors.append(
                 "candidate_stereotactic_frame requires cranial_landmark_candidates"
             )
+        if "brain_contact_surface_candidate" in modules and not isinstance(
+            modules.get("brain_contact_surface_candidate"), bool
+        ):
+            errors.append("modules.brain_contact_surface_candidate must be true or false")
 
     input_paths = {}
     for modality in ("ct", "mri"):
@@ -911,6 +915,70 @@ def validate(config, allow_missing_paths=False):
             warnings.append(
                 "apparatus is not calibrated; candidate frame is not a mechanical/surgical frame"
             )
+
+    brain_contact = config.get(
+        "brain_contact",
+        {
+            "status": "NOT_REQUESTED",
+            "accepted_for_surgical_use": False,
+            "coordinate_space": "MRI_NATIVE_WORLD_RAS_MM",
+            "expert_review_required": True,
+        },
+    )
+    brain_contact_requested = bool(modules.get("brain_contact_surface_candidate"))
+    allowed_brain_contact_states = {
+        "NOT_REQUESTED",
+        "PLANNED",
+        "CANDIDATE_GENERATED",
+        "EXPERT_REVIEWED",
+    }
+    if brain_contact.get("status") not in allowed_brain_contact_states:
+        errors.append(
+            f"brain_contact.status must be one of {sorted(allowed_brain_contact_states)}"
+        )
+    if brain_contact.get("accepted_for_surgical_use") is not False:
+        errors.append("brain_contact.accepted_for_surgical_use must be false")
+    if brain_contact.get("coordinate_space") != "MRI_NATIVE_WORLD_RAS_MM":
+        errors.append("brain_contact.coordinate_space must be MRI_NATIVE_WORLD_RAS_MM")
+    if brain_contact.get("expert_review_required") is not True:
+        errors.append("brain_contact.expert_review_required must be true")
+    if brain_contact_requested:
+        if brain_contact.get("status") == "NOT_REQUESTED":
+            errors.append("brain-contact module is enabled but status is NOT_REQUESTED")
+        if brain_contact.get("status") in ("CANDIDATE_GENERATED", "EXPERT_REVIEWED"):
+            _, contact_config = verified_json_record(
+                brain_contact.get("config"),
+                "brain_contact.config",
+                errors,
+                allow_missing_paths,
+            )
+            _, contact_report = verified_json_record(
+                brain_contact.get("provenance_report"),
+                "brain_contact.provenance_report",
+                errors,
+                allow_missing_paths,
+            )
+            for label, payload in (
+                ("config", contact_config),
+                ("provenance_report", contact_report),
+            ):
+                if payload is None:
+                    continue
+                if payload.get("status") != "UNVERIFIED_CANDIDATE":
+                    errors.append(f"brain_contact {label} status must be UNVERIFIED_CANDIDATE")
+                if payload.get("subject_id") != config.get("subject_id"):
+                    errors.append(f"brain_contact {label} subject_id does not match project")
+            if contact_config is not None and contact_config.get("research_only") is not True:
+                errors.append("brain_contact config research_only must be true")
+            if (
+                contact_report is not None
+                and contact_report.get("accepted_for_surgical_use") is not False
+            ):
+                errors.append(
+                    "brain_contact provenance_report accepted_for_surgical_use must be false"
+                )
+    elif brain_contact.get("status") != "NOT_REQUESTED":
+        errors.append("brain-contact module is disabled but brain_contact.status is not NOT_REQUESTED")
 
     qa = config.get("qa", {})
     for key in ("independent_reviewer_required", "expert_hf_review_required"):

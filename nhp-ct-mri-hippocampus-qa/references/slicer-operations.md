@@ -28,6 +28,15 @@
 - Use nearest-neighbor when resampling labels.
 - Display 2D fill/outline and 3D surfaces with transparent context, but verify voxel labels independently of rendering.
 
+## Brain-contact curvature candidate
+
+- Use a frozen binary brain mask in MRI native geometry with no parent transform.
+- Record footprint corners, projection line, and in-plane reference vector in Slicer world RAS millimetres.
+- Run `scripts/slicer_generate_brain_contact_block.py` with a completed copy of `assets/brain-contact-config.example.json`; do not edit case coordinates into the reusable script.
+- Keep the generated closed block and contact-only surface free of parent transforms. Save through Slicer so STL LPS storage round-trips to the same RAS position.
+- Display the input rectangle, direction line, mask/brain context, registered skull context, and candidate together. Review the full footprint in linked slices.
+- Treat envelope window, Gaussian sigma, and artificial-dura offset as case-specific unverified parameters. Record and compare variants rather than silently tuning by appearance.
+
 ## Cranial-landmark markups and CT rendering
 
 - Review bony EAM and inferior orbital rim on the original thin-slice CT with bone window/level and volume rendering; do not rely on MRI globe or lens boundaries for orbitale.

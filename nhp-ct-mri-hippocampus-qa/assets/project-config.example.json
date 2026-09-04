@@ -10,6 +10,7 @@
     "hippocampal_candidate": true,
     "cranial_landmark_candidates": false,
     "candidate_stereotactic_frame": false,
+    "brain_contact_surface_candidate": false,
     "independent_tre": true
   },
   "inputs": {
@@ -85,6 +86,14 @@
     "apparatus_and_calibration_record": null,
     "expert_landmark_review_required": true
   },
+  "brain_contact": {
+    "status": "NOT_REQUESTED",
+    "accepted_for_surgical_use": false,
+    "coordinate_space": "MRI_NATIVE_WORLD_RAS_MM",
+    "config": null,
+    "provenance_report": null,
+    "expert_review_required": true
+  },
   "qa": {
     "approved_protocol": "",
     "tre_thresholds_file": null,
@@ -93,6 +102,7 @@
       "hippocampal_candidate": null,
       "cranial_landmark_candidates": null,
       "candidate_stereotactic_frame": null,
+      "brain_contact_surface_candidate": null,
       "independent_tre": null
     },
     "independent_reviewer_required": true,

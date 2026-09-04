@@ -88,7 +88,18 @@ Exit with `UNVERIFIED_CANDIDATE`, `QA_FAILED`, or named expert review. Never int
 - Compute per-point and summary errors in millimetres; report distribution and spatial coverage.
 - Apply only thresholds from a pre-approved, named protocol.
 
-### Phase H — package validation
+### Phase H — brain-contact geometry branch
+
+- Run only when a user-defined or documented expert-defined contact footprint and projection direction are available.
+- Freeze the MRI-native brain mask and record the two opposite rectangle corners, directed line, in-plane reference vector, and all sampling/smoothing parameters in Slicer world RAS millimetres.
+- Do not infer a craniotomy, target, trajectory, implant pressure, clearance, or safety margin from the hippocampal or frame candidates.
+- Generate first-hit, smoothed outer-envelope contact geometry with `scripts/slicer_generate_brain_contact_block.py`.
+- Validate full ray coverage, no mask penetration, watertightness, STL RAS/LPS round trip, and slice-by-slice mask plausibility under the entire footprint.
+- Preserve alternate smoothing candidates and report the maximum raw-to-smoothed bridge distance when smoothing materially changes the surface.
+
+Exit with `UNVERIFIED_CANDIDATE` or `QA_FAILED`; automation must not promote a contact model to surgical or implant-ready status.
+
+### Phase I — package validation
 
 - Build a self-contained candidate package, including requested cranial-landmark reports, markups, and QA.
 - Remove hidden experimental nodes, parent transforms, native moving volumes, and CLI history.
@@ -107,4 +118,4 @@ On a failed gate:
 
 ## 4. Expert handoff
 
-Provide source identifiers, fixed/moving definitions, transform direction, atlas/version, cranial-landmark definitions and methods, coordinate convention, candidate origin/frame status, apparatus-calibration status, candidate state, uncertainty list, QA images, TRE protocol/results, hashes, and exact questions requiring adjudication. Never ask reviewers to infer which result was used.
+Provide source identifiers, fixed/moving definitions, transform direction, atlas/version, cranial-landmark definitions and methods, coordinate convention, candidate origin/frame status, apparatus-calibration status, brain-contact footprint/direction/mask/smoothing provenance when requested, candidate state, uncertainty list, QA images, TRE protocol/results, hashes, and exact questions requiring adjudication. Never ask reviewers to infer which result was used.
