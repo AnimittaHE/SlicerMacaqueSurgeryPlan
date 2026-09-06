@@ -72,7 +72,7 @@ Include pre-registration versus chosen candidate, all three planes, temporal-lob
 - Check transform determinant, orthogonality, direction, and expected hash.
 - Verify segmentation names, colors, label codes, and geometry.
 - Verify every landmark's source space, common world space, node parent transform, report hash, and coordinate-side label.
-- For brain-contact outputs, verify the frozen mask/config hashes, RAS inputs and basis, full-footprint ray coverage, no-penetration invariant, zero boundary/non-manifold edges, and STL reload bounds agreement.
+- For current skull-model outputs, follow `skull-blender-modeling.md`: freeze the smooth surface/config, verify world-space coordinates, full-footprint Boolean inner-wall coverage, off-grid fitting errors, continuous minimum axial thickness, valid STEP reload and zero boundary/non-manifold preview edges. Preserve required source-context transforms and audit the derived world-space model separately. The old mask no-penetration invariant applies only to explicitly requested legacy MRI-mask experiments.
 - Recompute midpoints and frame vectors from packaged points; check unit length, mutual orthogonality, handedness, degeneracy, and sign-evidence status.
 - Recompute package hashes after every final change and verify them independently.
 

@@ -1,5 +1,7 @@
 # MRI-derived brain-surface contact geometry
 
+Legacy reference for explicitly requested MRI-mask experiments only. For specified curved-bottom models use [skull-blender-modeling.md](skull-blender-modeling.md), the maintained smooth-skull Blender Boolean and STEP workflow. Do not automatically route a CAD modeling request to the legacy generator below.
+
 ## Scope
 
 Use this branch to create a rectangular, directed, MRI-brain-mask-derived contact-surface candidate and a closed test block for downstream CAD inspection. It does not choose a craniotomy, target, trajectory, implant pressure, clearance, fixation, or safety margin. The footprint and direction must come from the user or a documented expert-reviewed planning step.

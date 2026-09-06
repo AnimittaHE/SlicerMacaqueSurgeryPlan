@@ -1,9 +1,9 @@
 ---
 name: nhp-ct-mri-hippocampus-qa
-description: Run a guarded research-only workflow for non-human-primate CT-to-T1 MRI registration, orientation and laterality auditing, hippocampal candidate visualization, cranial-landmark and candidate-frame construction, independent TRE, and MRI-derived brain-contact curvature candidate modeling for Slicer/CAD. Use for monkey or macaque CT/MRI registration; flip or double-transform investigation; NHP atlas mapping; ear/EAM, EBZ, AP/ML zero, orbitale, or frame candidates; colored brain-region candidates; user-defined directed rectangular brain-surface contact blocks; preoperative research scenes; provenance; or package validation. Do not use to approve surgery, choose a craniotomy, trajectory, target, pressure, or safety margin.
+description: Run a research-only workflow for non-human-primate CT-to-T1 MRI registration, orientation and laterality auditing, hippocampal visualization, cranial landmarks, candidate frames, independent TRE, and user-directed smooth skull-curvature modeling using Slicer, Blender Boolean operations and STEP solids. Use for NHP imaging QA or rectangular curved-bottom CAD candidates with a specified direction and minimum thickness. Do not use to approve surgery, choose a craniotomy, trajectory, target, pressure, or safety margin.
 ---
 
-# NHP CT-MRI, Landmark, and Brain-Contact Candidate QA
+# NHP CT-MRI, Landmark, and Skull-Curvature Candidate QA
 
 ## Non-negotiable scope
 
@@ -93,17 +93,20 @@ Read `references/cranial-landmarks-and-stereotactic-frame.md` before locating ea
 - Freeze and verify the native CT, native MRI, chosen transform, landmark specification, and blank templates before marking.
 - Report every point, RMS, median, 95th percentile, maximum, signed R/A/S mean error, and spatial coverage. Apply no pass/fail grade unless an approved thresholds file is supplied.
 
-### Gate 7 - brain-surface contact geometry candidate
+### Gate 7 - smooth skull-curvature model using Blender
 
-- Run this branch only from a frozen individual-subject brain mask in MRI native world space. Do not substitute an atlas-average cortical surface when subject-specific contact curvature is requested.
+- Start from the selected scene's existing smooth Skull closed surface and preserve its saved smoothing settings. Do not replace it with a fresh high-resolution CT threshold mesh merely to increase detail.
 - Require a user- or expert-defined rectangular footprint and directed projection line. Do not automatically select a craniotomy, target, trajectory, contact pressure, or safety margin.
 - Express two opposite rectangle corners and the directed line in one Slicer world RAS millimetre space. Also record an in-plane reference vector because a diagonal and projection direction alone do not uniquely fix the rectangle edge directions.
-- Require the brain-mask node, input markups, and generated models to have no parent transform. Stop on possible double application.
-- Use `scripts/slicer_generate_brain_contact_block.py` for deterministic first-hit ray casting, configurable outer-envelope/Gaussian smoothing, a no-penetration clamp, watertight block construction, STL round-trip validation, provenance, and hashes.
+- Audit labelmap geometry and parent transforms together. No parent can mean registration is already embedded in geometry. Export world RAS millimetres exactly once and keep existing registration unchanged.
+- Export the smooth skull and crossing prism in the same coordinates. Run Blender Exact Boolean INTERSECT, identify the local inner wall from the cavity side, and preserve the Boolean result for inspection.
+- Fit broad curvature with a compact continuous surface, initially one bicubic patch with 4x4 control points. Record signed deviations and independent off-grid errors rather than forcing the fit to follow every voxel ripple.
+- Keep a planar top perpendicular to the directed axis. For requested minimum axial thickness t, set top height to max(continuous bottom height)+t. A thickness-only change preserves the bottom and footprint; use bounded continuous extrema rather than only STL vertices.
+- Sew the curved bottom, planar top and four sides into an ordinary BREP solid; export and reload STEP. Distinguish skull-inner-wall curvature from actual cortex and geometric thickness from mechanical strength.
 - Treat artificial-dura smoothing and offset as unvalidated geometric parameters, not tissue mechanics. Keep the offset at zero until thickness, compression, wrinkling, fixation, and preload are documented.
 - Require full-footprint slice review, 3D context, zero open/non-manifold edges, and saved-STL reload agreement before handing a candidate to Blender or SolidWorks.
 
-Read `references/brain-surface-contact-modeling.md` before deriving a contact surface or closed contact block.
+Read `references/skull-blender-modeling.md` before generating specified CAD models. The old MRI-mask generator is retained only for explicitly requested legacy experiments and is not the default modeling method.
 
 ### Gate 8 - package and scene validation
 
@@ -128,7 +131,7 @@ Stop and report the exact blocker when any of these occurs:
 - ear or orbit candidates outside bone/anatomy, unstable across thresholds/slices, or dependent on one extreme voxel;
 - insufficient evidence to sign AP, ML, or DV axes or calibrate the frame;
 - insufficient independent landmarks or validation leakage;
-- brain-contact inputs in mixed spaces, diagonal-plane failure, top samples inside the brain mask, incomplete ray coverage, unreviewed mask boundary, no-penetration failure, non-manifold geometry, or STL round-trip mismatch;
+- model inputs in mixed spaces, ambiguous rectangle orientation or inner-wall selection, incomplete ray coverage, invalid Boolean/BREP geometry, nonpositive thickness, or export/reload coordinate mismatch;
 - unspecified artificial-dura thickness/compression or mechanical constraints when a contact candidate would be used beyond visualization;
 - missing approved thresholds when a pass/fail judgment is requested;
 - failed hash, scene self-containment, or source-integrity check;
@@ -144,6 +147,6 @@ Do not guess around a gate. Produce diagnostic artifacts with `QA_FAILED` or `UN
 - Use `references/atlas-and-segmentation.md` for NHP atlas applicability and hippocampal review.
 - Use `references/cranial-landmarks-and-stereotactic-frame.md` for ear, orbitale, midpoint, axis, and frame-candidate work.
 - Use `references/slicer-operations.md` for Slicer execution, interpolation, markups, screenshots, rendering, and scene handling.
-- Use `references/brain-surface-contact-modeling.md` for a user-defined directed rectangle, MRI-mask first-hit envelope, artificial-dura smoothing parameters, STL generation, and mesh QA.
+- Use `references/skull-blender-modeling.md` for smooth skull export, Blender Boolean inner-wall extraction, compact curve fitting, minimum thickness, STEP solids and model QA.
 - Use `references/package-contract.md` for deliverables, provenance, naming, and validation.
 - Copy and complete files in `assets/`; never use example values as approved protocol content.

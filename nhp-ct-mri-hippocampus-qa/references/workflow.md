@@ -88,14 +88,14 @@ Exit with `UNVERIFIED_CANDIDATE`, `QA_FAILED`, or named expert review. Never int
 - Compute per-point and summary errors in millimetres; report distribution and spatial coverage.
 - Apply only thresholds from a pre-approved, named protocol.
 
-### Phase H — brain-contact geometry branch
+### Phase H — smooth skull modeling with Blender
 
 - Run only when a user-defined or documented expert-defined contact footprint and projection direction are available.
-- Freeze the MRI-native brain mask and record the two opposite rectangle corners, directed line, in-plane reference vector, and all sampling/smoothing parameters in Slicer world RAS millimetres.
+- Freeze the selected scene's existing smooth skull surface and record the rectangle, directed line, in-plane reference, surface parameters and minimum-thickness rule in world RAS millimetres.
 - Do not infer a craniotomy, target, trajectory, implant pressure, clearance, or safety margin from the hippocampal or frame candidates.
-- Generate first-hit, smoothed outer-envelope contact geometry with `scripts/slicer_generate_brain_contact_block.py`.
-- Validate full ray coverage, no mask penetration, watertightness, STL RAS/LPS round trip, and slice-by-slice mask plausibility under the entire footprint.
-- Preserve alternate smoothing candidates and report the maximum raw-to-smoothed bridge distance when smoothing materially changes the surface.
+- Follow `references/skull-blender-modeling.md`: Blender Exact Boolean intersection, cavity-facing inner-wall extraction, compact bicubic fitting and a planar-top STEP solid.
+- Validate full ray coverage, independent approximation errors, continuous minimum axial thickness, watertightness, coordinate round trips and STEP reload geometry.
+- Preserve bottom geometry during thickness-only edits and record source-to-fit deviations. Do not claim no penetration for an unconstrained fit.
 
 Exit with `UNVERIFIED_CANDIDATE` or `QA_FAILED`; automation must not promote a contact model to surgical or implant-ready status.
 
